@@ -20,37 +20,10 @@ const questions = [
             "Update an employee role",
         ]
     },
-
-
-    {
-        name: "text",
-        type: "input",
-        message: "Enter three characters",
-    },
-
-    {
-        name: "employee_name",
-        type: "input",
-        message: "What is the employee's name?",
-    },
-
-    {
-        name: "shapes",
-        type: "list",
-        message: "Choose a shape for your logo",
-        choices: [
-            "Circle",
-            "Square",
-            "Triangle",
-        ]
-    },
-
-    {
-        name: "title",
-        type: "input",
-        message: "What is the employee's title?",
-    },
 ];
+
+ // do a switch statement based on whatever choice
+
 
 // function generateSVG(answers, shape) {
 //     let svg = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">`;

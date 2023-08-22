@@ -5,6 +5,23 @@ const { Circle, Triangle, Square } = require('./lib/shapes');
 
 // TODO: Create an array of questions for user input
 const questions = [ 
+
+    {
+        name: "options",
+        type: "list",
+        message: "Choose an option",
+        choices: [
+            "View all departments",
+            "View all roles",
+            "View all employees",
+            "Add a department",
+            "Add a role",
+            "Add an employee",
+            "Update an employee role",
+        ]
+    },
+
+
     {
         name: "text",
         type: "input",

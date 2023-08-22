@@ -12,9 +12,9 @@ const questions = [
     },
 
     {
-        name: "text_color",
+        name: "employee_name",
         type: "input",
-        message: "Insert a color for text",
+        message: "What is the employee's name?",
     },
 
     {
@@ -29,9 +29,9 @@ const questions = [
     },
 
     {
-        name: "shapes_color",
+        name: "title",
         type: "input",
-        message: "Enter a shape color",
+        message: "What is the employee's title?",
     },
 ];
 

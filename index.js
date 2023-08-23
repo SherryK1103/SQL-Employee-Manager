@@ -24,6 +24,7 @@ const questions = [
 
  // do a switch statement based on whatever choice
 
+ 
 
 // function generateSVG(answers, shape) {
 //     let svg = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">`;

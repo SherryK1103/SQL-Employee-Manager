@@ -25,8 +25,12 @@ const questions = [
 // Choose all departments:
 // job title, role ID, department, salary
 
+// Choose View All Roles: job title, role id, dept role belongs to, salary
+
 // Choose View All Employees
 // formatted table showing employee data including emp ID, first name, last name, job title, departments, salaries, and managers
+
+
 
 
 // Choose Add a Department, then prompted tp enter a name, salary, and department for the role and it's added to DB

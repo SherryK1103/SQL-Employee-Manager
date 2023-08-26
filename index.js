@@ -166,6 +166,8 @@ const updateEmployeeRole = [
 
 // Function to handle the "View all departments" case
 function handleViewAllDepartments() {
+    console.log("Viewing all departments");
+
     const query = "SELECT * FROM departments";
     dbConnection.query(query, (err, results) => {
         if (err) {
@@ -173,8 +175,8 @@ function handleViewAllDepartments() {
         } else {
             console.table(results);
         }
-    })
-    console.log("Viewing all departments");
+        mainMenu();
+    });
 }
 
 function handleViewAllRoles() {

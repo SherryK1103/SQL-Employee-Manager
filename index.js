@@ -166,7 +166,14 @@ const updateEmployeeRole = [
 
 // Function to handle the "View all departments" case
 function handleViewAllDepartments() {
-    
+    const query = "SELECT * FROM departments";
+    dbConnection.query(query, (err, results) => {
+        if (err) {
+            console.error("Error retrieving departments:", err);
+        } else {
+            console.table(results);
+        }
+    })
     console.log("Viewing all departments");
 }
 

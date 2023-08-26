@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
-const port = 3000; // Choose an appropriate port
+const port = 3000; 
 
-app.use(express.static('public')); // Serve static files from the 'public' directory
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.send('Hello, this is your web application.');

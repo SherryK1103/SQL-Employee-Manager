@@ -176,6 +176,7 @@ const updateEmployeeRole = [
 
 // Function to handle the "View all departments" case
 function handleViewAllDepartments() {
+     // query is block-scoped in each function so there should be no conflicts
     console.log("Viewing all departments");
 
     const query = "SELECT * FROM departments";
@@ -190,6 +191,8 @@ function handleViewAllDepartments() {
 }
 
 function handleViewAllRoles() {
+    console.log("Viewing all roles");
+
     const query = "SELECT * FROM roles";
     dbConnection.query(query, (err, results) => {
         if (err) {
@@ -214,8 +217,17 @@ function handleViewAllEmployees() {
 }
 
 function handleAddDepartment() {
-    
     console.log("Add a department");
+
+    const query = "SELECT * FROM departments";
+    dbConnection.query(query, (err, results) => {
+        if (err) {
+            console.error("Error retrieving departments:", err);
+        } else {
+            console.table(results);
+        }
+        mainMenu();
+    });
 }
 
 function handleAddRole() {

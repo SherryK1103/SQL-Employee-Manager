@@ -227,3 +227,72 @@ const updateEmployeeRole = [
 ];
 
 
+// Function to handle the "View all departments" case
+function handleViewAllDepartments() {
+    // Replace this with the code to view all departments
+    console.log("Viewing all departments");
+}
+
+function handleViewAllRoles() {
+    // Replace this with the code to view all departments
+    console.log("Viewing all roles");
+}
+
+function handleViewAllEmployees() {
+    // Replace this with the code to view all departments
+    console.log("Viewing all employees");
+}
+
+function handleAddDepartment() {
+    // Replace this with the code to view all departments
+    console.log("Add a department");
+}
+
+function handleAddRole() {
+    // Replace this with the code to view all departments
+    console.log("Add a role");
+}
+
+function handleAddEmployee() {
+    // Replace this with the code to view all departments
+    console.log("Add an employee");
+}
+
+function handleUpdateEmployeeRole() {
+    // Replace this with the code to view all departments
+    console.log("Update an employee role");
+}
+
+// Function to handle the main menu
+async function mainMenu() {
+    const answers = await inquirer.prompt(questions);
+    const selectedOption = answers.options;
+
+    switch (selectedOption) {
+        case "View all departments":
+            handleViewAllDepartments();
+            break;
+        case "View all roles":
+            handleViewAllRoles();
+            break;
+        case "View all employees":
+            handleViewAllEmployees();
+            break;
+        case "Add a department":
+            handleAddDepartment();
+            break;
+        case "Add a role":
+            handleAddRole();
+            break;
+        case "Add an employee":
+            handleAddEmployee();
+            break;
+        case "Update an employee role":
+            handleUpdateEmployeeRole();
+            break;
+        default:
+            console.log("Invalid option selected.");
+    }
+}
+
+mainMenu();

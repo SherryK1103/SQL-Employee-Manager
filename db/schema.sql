@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS classlist_db;
+DROP DATABASE IF EXISTS employee_db;
 
-CREATE DATABASE classlist_db;
+CREATE DATABASE employee_db;
 
-USE classlist_db;
+USE employee_db;
 
 CREATE TABLE (
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

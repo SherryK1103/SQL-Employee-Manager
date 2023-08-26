@@ -1,3 +1,7 @@
+CREATE DATABASE EmployeeTracker_DB;
+
+USE EmployeeTracker_DB;
+
 CREATE TABLE
     departments (
         id INT AUTO_INCREMENT PRIMARY KEY,

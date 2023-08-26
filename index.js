@@ -1,11 +1,12 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
+require('dotenv').config();
 
 const dbConnection = mysql.createConnection({
-    host: 'your_database_host',
-    user: 'your_database_user',
-    password: 'your_database_password',
-    database: 'your_database_name'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 dbConnection.connect(err => {
@@ -13,13 +14,11 @@ dbConnection.connect(err => {
         console.error('Error connecting to database:', err);
     } else {
         console.log('Connected to the database');
-        mainMenu(); // Start the main menu once connected
+        mainMenu();
     }
 });
 
-// TODO: Create an array of questions for user input
-const questions = [ 
-
+const questions = [
     {
         name: "options",
         type: "list",
@@ -43,9 +42,6 @@ const questions = [
 
 // Choose View All Employees
 // formatted table showing employee data including emp ID, first name, last name, job title, departments, salaries, and managers
-
-
-
 
 // Choose Add a Department, then prompted tp enter a name, salary, and department for the role and it's added to DB
 
@@ -194,13 +190,27 @@ function handleViewAllDepartments() {
 }
 
 function handleViewAllRoles() {
-    
-    console.log("Viewing all roles");
+    const query = "SELECT * FROM roles";
+    dbConnection.query(query, (err, results) => {
+        if (err) {
+            console.error("Error retrieving roles:", err);
+        } else {
+            console.table(results);
+        }
+        mainMenu();
+    });
 }
 
 function handleViewAllEmployees() {
-    
-    console.log("Viewing all employees");
+    const query = "SELECT * FROM employees";
+    dbConnection.query(query, (err, results) => {
+        if (err) {
+            console.error("Error retrieving employees:", err);
+        } else {
+            console.table(results);
+        }
+        mainMenu();
+    });
 }
 
 function handleAddDepartment() {

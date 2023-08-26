@@ -1,6 +1,21 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 
+const dbConnection = mysql.createConnection({
+    host: 'your_database_host',
+    user: 'your_database_user',
+    password: 'your_database_password',
+    database: 'your_database_name'
+});
+
+dbConnection.connect(err => {
+    if (err) {
+        console.error('Error connecting to database:', err);
+    } else {
+        console.log('Connected to the database');
+        mainMenu(); // Start the main menu once connected
+    }
+});
 
 // TODO: Create an array of questions for user input
 const questions = [ 

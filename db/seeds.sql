@@ -12,4 +12,4 @@ INSERT INTO
         role_id,
         manager_id
     )
-VALUES ('Buffy', 'Summers', 2, NULL), ('Xander', 'Harris', 3, 1), ('Willow', 'Rosenburg', 1, NULL);
+VALUES ('Buffy', 'Summers', 2, NULL), ('Xander', 'Harris', 3, 1), ('Willow', 'Rosenberg', 1, NULL);

@@ -178,59 +178,52 @@ const updateEmployeeRole = [
 
 
 // Function to handle the "View all departments" case
-function handleViewAllDepartments() {
+async function handleViewAllDepartments() {
      // query is block-scoped in each function so there should be no conflicts
     console.log("Viewing all departments");
 
-    const query = "SELECT * FROM departments";
-    dbConnection.query(query, (err, results) => {
-        if (err) {
-            console.error("Error retrieving departments:", err);
-        } else {
-            console.table(results);
-        }
-        mainMenu();
-    });
+    try {
+        const query = "SELECT * FROM departments";
+        const [results] = await dbConnection.promise().query(query);
+        console.table(results);
+    } catch (err) {
+        console.error("Error retrieving departments:", err);
+    }
+    mainMenu();
 }
 
-function handleViewAllRoles() {
-    console.log("Viewing all roles");
+async function handleViewAllRoles() {
+    // query is block-scoped in each function so there should be no conflicts
+   console.log("Viewing all roles");
 
-    const query = "SELECT * FROM roles";
-    dbConnection.query(query, (err, results) => {
-        if (err) {
-            console.error("Error retrieving roles:", err);
-        } else {
-            console.table(results);
-        }
-        mainMenu();
-    });
+   try {
+       const query = "SELECT * FROM roles";
+       const [results] = await dbConnection.promise().query(query);
+       console.table(results);
+   } catch (err) {
+       console.error("Error retrieving roles:", err);
+   }
+   mainMenu();
 }
 
-function handleViewAllEmployees() {
-    const query = "SELECT * FROM employees";
-    dbConnection.query(query, (err, results) => {
-        if (err) {
-            console.error("Error retrieving employees:", err);
-        } else {
-            console.table(results);
-        }
-        mainMenu();
-    });
+async function handleViewAllEmployees() {
+    // query is block-scoped in each function so there should be no conflicts
+   console.log("Viewing all employees");
+
+   try {
+       const query = "SELECT * FROM employees";
+       const [results] = await dbConnection.promise().query(query);
+       console.table(results);
+   } catch (err) {
+       console.error("Error retrieving employees:", err);
+   }
+   mainMenu();
 }
+
 
 function handleAddDepartment() {
+    
     console.log("Add a department");
-
-    const query = "SELECT * FROM departments";
-    dbConnection.query(query, (err, results) => {
-        if (err) {
-            console.error("Error retrieving departments:", err);
-        } else {
-            console.table(results);
-        }
-        mainMenu();
-    });
 }
 
 function handleAddRole() {
@@ -256,25 +249,25 @@ async function mainMenu() {
 
         switch (selectedOption) {
             case "View all departments":
-                handleViewAllDepartments();
+                await handleViewAllDepartments();
                 break;
             case "View all roles":
-                handleViewAllRoles();
+                await handleViewAllRoles();
                 break;
             case "View all employees":
-                handleViewAllEmployees();
+                await handleViewAllEmployees();
                 break;
             case "Add a department":
-                handleAddDepartment();
+                await handleAddDepartment();
                 break;
             case "Add a role":
-                handleAddRole();
+                await handleAddRole();
                 break;
             case "Add an employee":
-                handleAddEmployee();
+                await handleAddEmployee();
                 break;
             case "Update an employee role":
-                handleUpdateEmployeeRole();
+                await handleUpdateEmployeeRole();
                 break;
             default:
                 console.log("Invalid option selected.");

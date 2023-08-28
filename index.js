@@ -9,14 +9,17 @@ const dbConnection = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
-dbConnection.connect(err => {
-    if (err) {
-        console.error('Error connecting to database:', err);
-    } else {
+const connectPromise = promisify(dbConnection.connect).bind(dbConnection);
+
+async function connectToDatabase() {
+    try {
+        await connectPromise();
         console.log('Connected to the database');
         mainMenu();
+    } catch (err) {
+        console.error('Error connecting to database:', err);
     }
-});
+}
 
 const questions = [
     {
@@ -247,33 +250,37 @@ function handleUpdateEmployeeRole() {
 
 // Function to handle the main menu
 async function mainMenu() {
-    const answers = await inquirer.prompt(questions);
-    const selectedOption = answers.options;
+    try {
+        const answers = await inquirer.prompt(questions);
+        const selectedOption = answers.options;
 
-    switch (selectedOption) {
-        case "View all departments":
-            handleViewAllDepartments();
-            break;
-        case "View all roles":
-            handleViewAllRoles();
-            break;
-        case "View all employees":
-            handleViewAllEmployees();
-            break;
-        case "Add a department":
-            handleAddDepartment();
-            break;
-        case "Add a role":
-            handleAddRole();
-            break;
-        case "Add an employee":
-            handleAddEmployee();
-            break;
-        case "Update an employee role":
-            handleUpdateEmployeeRole();
-            break;
-        default:
-            console.log("Invalid option selected.");
+        switch (selectedOption) {
+            case "View all departments":
+                handleViewAllDepartments();
+                break;
+            case "View all roles":
+                handleViewAllRoles();
+                break;
+            case "View all employees":
+                handleViewAllEmployees();
+                break;
+            case "Add a department":
+                handleAddDepartment();
+                break;
+            case "Add a role":
+                handleAddRole();
+                break;
+            case "Add an employee":
+                handleAddEmployee();
+                break;
+            case "Update an employee role":
+                handleUpdateEmployeeRole();
+                break;
+            default:
+                console.log("Invalid option selected.");
+        }
+    } catch (err) {
+        console.error("an error occurred:", err);
     }
 }
 

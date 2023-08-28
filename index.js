@@ -285,3 +285,4 @@ async function mainMenu() {
 }
 
 mainMenu();
+connectToDatabase();

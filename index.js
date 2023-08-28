@@ -221,22 +221,22 @@ async function handleViewAllEmployees() {
 }
 
 
-function handleAddDepartment() {
+async function handleAddDepartment() {
     
     console.log("Add a department");
 }
 
-function handleAddRole() {
+async function handleAddRole() {
     
     console.log("Add a role");
 }
 
-function handleAddEmployee() {
+async function handleAddEmployee() {
     
     console.log("Add an employee");
 }
 
-function handleUpdateEmployeeRole() {
+async function handleUpdateEmployeeRole() {
     
     console.log("Update an employee role");
 }

@@ -194,20 +194,27 @@ async function handleAddDepartment() {
     } catch (err) {
         console.error("Error adding department:", err);
     }
-
     mainMenu();
 }
 
 async function handleAddRole() {
-    const answers = await inquirer.prompt([{
-        name: "text",
-        type: "input",
-        message: "Add a role",
-        }]
-    );
-    console.log(answers.text);
-    console.log("Add a role");
+    try {
+        const answers = await inquirer.prompt([{
+            name: "text",
+            type: "input",
+            message: "Add a role",
+        }]);
 
+        const addRole = answers.addRole;
+
+        const query = "INSERT INTO roles (title) VALUES (?)";
+        await dbConnection.promise().query(query, [addRole]);
+
+        console.log(`Added role: ${addRole}`);
+    } catch (err) {
+        console.error("Error adding role:", err);
+    }
+    mainMenu();
 }
 
 async function handleAddEmployee() {

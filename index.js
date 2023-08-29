@@ -12,11 +12,11 @@ const dbConnection = mysql.createConnection({
 
 const connectPromise = promisify(dbConnection.connect).bind(dbConnection);
 
-async function connectToDatabase() {
+function connectToDatabase() {
     try {
-        await connectPromise();
+        connectPromise();
         console.log('Connected to the database');
-        mainMenu();
+        
     } catch (err) {
         console.error('Error connecting to database:', err);
     }

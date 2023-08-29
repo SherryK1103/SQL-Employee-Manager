@@ -205,12 +205,25 @@ async function handleAddDepartment() {
 }
 
 async function handleAddRole() {
-    
+    const answers = await inquirer.prompt([{
+        name: "text",
+        type: "input",
+        message: "Add a role",
+        }]
+    );
+    console.log(answers.text);
     console.log("Add a role");
+
 }
 
 async function handleAddEmployee() {
-    
+    const answers = await inquirer.prompt([{
+        name: "text",
+        type: "input",
+        message: "Add an employee",
+        }]
+    );
+    console.log(answers.text);
     console.log("Add an employee");
 }
 

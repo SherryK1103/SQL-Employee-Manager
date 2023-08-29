@@ -39,20 +39,6 @@ const questions = [
     },
 ];
 
-// Choose all departments:
-// job title, role ID, department, salary
-
-// Choose View All Roles: job title, role id, dept role belongs to, salary
-
-// Choose View All Employees
-// formatted table showing employee data including emp ID, first name, last name, job title, departments, salaries, and managers
-
-// Choose Add a Department, then prompted tp enter a name, salary, and department for the role and it's added to DB
-
-// Choose add an employee, prompted to enter employee's first name, last name, role, and manager
-
-// Choose update an employee role, thenprompted to select an employee to update their new role and this info is updated in the DB
-
 
 const addRole = [ 
     {
@@ -191,17 +177,25 @@ async function handleViewAllEmployees() {
    mainMenu();
 }
 
-
 async function handleAddDepartment() {
-    const answers = await inquirer.prompt([{
-            name: "text",
+    try {
+        const answers = await inquirer.prompt([{
+            name: "departmentName",
             type: "input",
-            message: "Add a department",
-        }]
-    );
-    console.log(answers.text);
-    console.log("Add a department");
-    // write the code that will actually add the dept to the database
+            message: "Enter the name of the new department:",
+        }]);
+        
+        const departmentName = answers.departmentName;
+
+        const query = "INSERT INTO departments (name) VALUES (?)";
+        await dbConnection.promise().query(query, [departmentName]);
+
+        console.log(`Added new department: ${departmentName}`);
+    } catch (err) {
+        console.error("Error adding department:", err);
+    }
+
+    mainMenu();
 }
 
 async function handleAddRole() {

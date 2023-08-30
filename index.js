@@ -218,14 +218,38 @@ async function handleAddRole() {
 }
 
 async function handleAddEmployee() {
-    const answers = await inquirer.prompt([{
-        name: "text",
+    try {
+        const answers = await inquirer.prompt([
+        
+        {
+        name: "firstName",
         type: "input",
-        message: "Add an employee",
-        }]
-    );
-    console.log(answers.text);
+        message: "Add employee's first name",
+        },
+        {
+        name: "lastName",
+        type: "input",
+        message: "Add employee's last name",
+        },
+        {
+        name: "salary",
+        type: "input",
+        message: "Add employee's last name",
+        }
+    
+    ])
+
+    const { firstName, lastName } = answers;
+    console.log(answers);
+    console.log("===================>"); // Dennis TA told me to write this
+    console.log(firstName);
+    console.log("===================>");
+    console.log(lastName);
+    console.log("===================>");
     console.log("Add an employee");
+} catch (err) {
+        console.error("Error adding employee", (err))
+    }
 }
 
 async function handleUpdateEmployeeRole() {

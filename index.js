@@ -222,33 +222,52 @@ async function handleAddEmployee() {
         const answers = await inquirer.prompt([
         
         {
-        name: "firstName",
-        type: "input",
-        message: "Add employee's first name",
+            name: "firstName",
+            type: "input",
+            message: "Add employee's first name",
         },
         {
-        name: "lastName",
-        type: "input",
-        message: "Add employee's last name",
+            name: "lastName",
+            type: "input",
+            message: "Add employee's last name",
         },
         {
-        name: "salary",
-        type: "input",
-        message: "Add employee's last name",
+            name: "salary",
+            type: "input",
+            message: "Add employee's salary",
+            validate: (value) => {
+                if (isNaN(value) || parseFloat(value) <= 0) {
+                    return "Please enter a valid positive number for salary.";
+                }
+                return true;
+            },
+        },
+        {
+            name: "role",
+            type: "input",
+            message: "Add employee's role",
+        },
+        {
+            name: "manager",
+            type: "input",
+            message: "Add employee's manager",
         }
-    
     ])
 
-    const { firstName, lastName } = answers;
-    console.log(answers);
-    console.log("===================>"); // Dennis TA told me to write this
-    console.log(firstName);
+    const { firstName, lastName, salary } = answers;
+
     console.log("===================>");
-    console.log(lastName);
+    console.log("Employee Details:");
+    console.log("First Name:", firstName);
+    console.log("Last Name:", lastName);
+    console.log("Salary:", salary);
+    console.log("Role:", answers.role);
+    console.log("Manager:", answers.manager);
     console.log("===================>");
-    console.log("Add an employee");
+
+    console.log("Employee added successfully.");
 } catch (err) {
-        console.error("Error adding employee", (err))
+    console.error("Error adding employee:", err);
     }
 }
 

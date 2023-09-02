@@ -2,6 +2,7 @@ const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const { promisify } = require('util');
 require('dotenv').config();
+const { updateEmployeeRole } = require('./server');
 
 const dbConnection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -38,101 +39,6 @@ const questions = [
         ]
     },
 ];
-
-
-const addRole = [ 
-    {
-        name: "text",
-        type: "input",
-        message: "Enter three characters",
-    },
-
-    {
-        name: "text_color",
-        type: "input",
-        message: "Insert a color for text",
-    },
-
-    {
-        name: "shapes",
-        type: "list",
-        message: "Choose a shape for your logo",
-        choices: [
-            "Circle",
-            "Square",
-            "Triangle",
-        ]
-    },
-
-    {
-        name: "shapes_color",
-        type: "input",
-        message: "Enter a shape color",
-    },
-];
-
-const addEmployee = [ 
-    {
-        name: "text",
-        type: "input",
-        message: "Enter three characters",
-    },
-
-    {
-        name: "text_color",
-        type: "input",
-        message: "Insert a color for text",
-    },
-
-    {
-        name: "shapes",
-        type: "list",
-        message: "Choose a shape for your logo",
-        choices: [
-            "Circle",
-            "Square",
-            "Triangle",
-        ]
-    },
-
-    {
-        name: "shapes_color",
-        type: "input",
-        message: "Enter a shape color",
-    },
-];
-
-const updateEmployeeRole = [ 
-    {
-        name: "text",
-        type: "input",
-        message: "Enter three characters",
-    },
-
-    {
-        name: "text_color",
-        type: "input",
-        message: "Insert a color for text",
-    },
-
-    {
-        name: "shapes",
-        type: "list",
-        message: "Choose a shape for your logo",
-        choices: [
-            "Circle",
-            "Square",
-            "Triangle",
-        ]
-    },
-
-    {
-        name: "shapes_color",
-        type: "input",
-        message: "Enter a shape color",
-    },
-];
-
 
 // Function to handle the "View all departments" case
 async function handleViewAllDepartments() {
@@ -219,8 +125,9 @@ async function handleAddRole() {
 
 async function handleAddEmployee() {
     try {
+        console.log("Add an employee");
+
         const answers = await inquirer.prompt([
-        
         {
             name: "firstName",
             type: "input",
@@ -272,9 +179,39 @@ async function handleAddEmployee() {
 }
 
 async function handleUpdateEmployeeRole() {
-    
-    console.log("Update an employee role");
-}
+    try {
+      console.log("Update an employee's role");
+  
+      const answers = await inquirer.prompt([
+        {
+          name: "employeeName",
+          type: "input",
+          message: "Enter the employee's name whose role you want to update:",
+        },
+        {
+          name: "newRole",
+          type: "input",
+          message: "Enter the new role for the employee:",
+        },
+      ]);
+  
+      const { employeeName, newRole } = answers;
+  
+      const updatedEmployee = await updateEmployeeRole(employeeName, newRole);
+  
+      if (updatedEmployee) {
+        console.log("===================>");
+        console.log(`Updated employee's role for ${employeeName} to ${newRole}`);
+        console.log("===================>");
+      } else {
+        console.log("===================>");
+        console.log(`Employee ${employeeName} not found.`);
+        console.log("===================>");
+      }
+    } catch (err) {
+      console.error("Error updating employee role:", err);
+    }
+  }
 
 // Function to handle the main menu
 async function mainMenu() {

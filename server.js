@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000; 
+const port = 3000;
 
 app.use(express.static('public'));
 
@@ -16,7 +16,7 @@ async function updateEmployeeRole(firstName, lastName, newRole) {
     try {
       
       const query = "UPDATE employees SET role_id = (SELECT id FROM roles WHERE title = ?) WHERE first_name = ? AND last_name = ?";
-      const [result] = await dbConnection.promise().query(query, [first_name, last_name, title]);
+      const [result] = await dbConnection.promise().query(query, [firstName, lastName, newRole]);
       
       if (result.affectedRows > 0) {
         return true;

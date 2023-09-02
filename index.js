@@ -184,10 +184,15 @@ async function handleUpdateEmployeeRole() {
   
       const answers = await inquirer.prompt([
         {
-          name: "employeeName",
+          name: "firstName",
           type: "input",
-          message: "Enter the employee's name whose role you want to update:",
+          message: "Enter the employee's first name whose role you want to update:",
         },
+        {
+            name: "lastName",
+            type: "input",
+            message: "Enter the employee's last name whose role you want to update:",
+          },
         {
           name: "newRole",
           type: "input",
@@ -195,17 +200,17 @@ async function handleUpdateEmployeeRole() {
         },
       ]);
   
-      const { employeeName, newRole } = answers;
+      const { firstName, lastName, newRole } = answers;
   
-      const updatedEmployee = await updateEmployeeRole(dbConnection, employeeName, newRole);
+      const updatedEmployee = await updateEmployeeRole(dbConnection, firstName, lastName, newRole);
   
       if (updatedEmployee) {
         console.log("===================>");
-        console.log(`Updated employee's role for ${employeeName} to ${newRole}`);
+        console.log(`Updated employee's role for ${firstName}  ${lastName} to ${newRole}`);
         console.log("===================>");
       } else {
         console.log("===================>");
-        console.log(`Employee ${employeeName} not found.`);
+        console.log(`Employee ${firstName} ${lastName} not found.`);
         console.log("===================>");
       }
     } catch (err) {

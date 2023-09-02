@@ -16,7 +16,7 @@ async function updateEmployeeRole(firstName, lastName, newRole) {
     try {
       
       const query = "UPDATE employees SET role_id = (SELECT id FROM roles WHERE title = ?) WHERE first_name = ? AND last_name = ?";
-      const [result] = await dbConnection.promise().query(query, [newRole, firstName, lastName]);
+      const [result] = await dbConnection.promise().query(query, [first_name, last_name, title]);
       
       if (result.affectedRows > 0) {
         return true;

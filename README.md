@@ -10,8 +10,8 @@ Go to the github link https://github.com/SherryK1103/SQL-Employee-Manager then c
 
 ## Usage
 
-chrome-extension://mmeijimgabbpbgpdklnllpncmdofkcpn/app.html#/files/bff0a5ba-ec13-4363-y665-65970b08045f
+https://drive.google.com/file/d/1DOSgjRloTJaWHQn5UnF9bRTB8Gpq5Ln3/view
 
 ## Mock Up
 
-[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/12-sql-homework-video-thumbnail.png)](chrome-extension://mmeijimgabbpbgpdklnllpncmdofkcpn/app.html#/files/bff0a5ba-ec13-4363-y665-65970b08045f)
+[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/12-sql-homework-video-thumbnail.png)](https://drive.google.com/file/d/1DOSgjRloTJaWHQn5UnF9bRTB8Gpq5Ln3/view)

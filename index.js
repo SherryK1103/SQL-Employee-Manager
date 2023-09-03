@@ -218,7 +218,7 @@ async function handleUpdateEmployeeRole() {
   
       const { firstName, lastName, newRole } = answers;
   
-      const updatedEmployee = await updateEmployeeRole(dbConnection, firstName, lastName, newRole);
+      const updatedEmployee = await updateEmployeeRole(firstName, lastName, newRole);
   
       if (updatedEmployee) {
         console.log("===================>");

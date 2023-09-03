@@ -14,4 +14,4 @@ https://drive.google.com/file/d/1DOSgjRloTJaWHQn5UnF9bRTB8Gpq5Ln3/view
 
 ## Mock Up
 
-[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/12-sql-homework-video-thumbnail.png)](https://drive.google.com/file/d/1DOSgjRloTJaWHQn5UnF9bRTB8Gpq5Ln3/view)
+[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/SQL-Employee-Manager.gif)](https://drive.google.com/file/d/1DOSgjRloTJaWHQn5UnF9bRTB8Gpq5Ln3/view)

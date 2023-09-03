@@ -2,7 +2,6 @@ const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const { promisify } = require('util');
 require('dotenv').config();
-const { updateEmployeeRole } = require('./server');
 
 const dbConnection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -177,6 +176,23 @@ async function handleAddEmployee() {
     console.error("Error adding employee:", err);
     }
 }
+
+async function updateEmployeeRole(firstName, lastName, newRole) {
+    try {
+      
+      const query = "UPDATE employees SET role_id = (SELECT id FROM roles WHERE title = ?) WHERE first_name = ? AND last_name = ?";
+      const [result] = await dbConnection.promise().query(query, [firstName, lastName, newRole]);
+      
+      if (result.affectedRows > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      console.error("Error updating employee role:", err);
+      return false;
+    }
+  }
 
 async function handleUpdateEmployeeRole() {
     try {

@@ -175,13 +175,15 @@ async function handleAddEmployee() {
 } catch (err) {
     console.error("Error adding employee:", err);
     }
+    mainMenu();
 }
 
 async function updateEmployeeRole(firstName, lastName, newRole) {
     try {
-      
-      const query = "UPDATE employees SET role_id = (SELECT id FROM roles WHERE title = ?) WHERE first_name = ? AND last_name = ?";
-      const [result] = await dbConnection.promise().query(query, [firstName, lastName, newRole]);
+        const query1 = "SELECT id FROM roles WHERE title = ?";
+        const [result1] = await dbConnection.promise().query(query1, newRole);
+        const query = `UPDATE employees SET role_id = ${result1[0].id} WHERE first_name = ? AND last_name = ?`;
+        const [result] = await dbConnection.promise().query(query, [firstName, lastName]);
       
       if (result.affectedRows > 0) {
         return true;
@@ -192,7 +194,7 @@ async function updateEmployeeRole(firstName, lastName, newRole) {
       console.error("Error updating employee role:", err);
       return false;
     }
-  }
+}
 
 async function handleUpdateEmployeeRole() {
     try {
@@ -232,6 +234,7 @@ async function handleUpdateEmployeeRole() {
     } catch (err) {
       console.error("Error updating employee role:", err);
     }
+    mainMenu();
   }
 
 // Function to handle the main menu

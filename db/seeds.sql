@@ -1,5 +1,5 @@
 INSERT INTO departments (name)
-VALUES ('DEFENSE'), ('SIDEKICKS'), ('VILLAINS');
+VALUES ('DEFENSE'), ('SCOOBY GANG'), ('VILLAINS');
 
 INSERT INTO
     roles (title, salary, department_id)
